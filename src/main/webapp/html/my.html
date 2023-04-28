@@ -1,11 +1,87 @@
-<html>
+<html lang="">
 <head>
     <title>RPG</title>
     <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script src=/js/showTable.js defer></script>
     <link href="/css/my.css" rel="stylesheet">
 </head>
-<body>
-<h1>RPG admin panel</h1>
-
+<body onload="onloadWindow()">
+<main class="classTableView">
+    <section class="container_tables">
+        <div class="tables">
+            <h1>RPG admin panel</h1>
+            <select id="pageSize" onchange="showTable()">
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+            <table id="tableGameUsers">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Race</th>
+                    <th>Profession</th>
+                    <th>Level</th>
+                    <th>Birthday</th>
+                    <th>Banned</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </table>
+            <label for="pagingButtons" class="pagination-sm">Count per page:</label>
+            <div id="pagingButtons">Pages:</div>
+        </div>
+    </section>
+    <hr>
+    <section class="form form_type_create">
+        <h2>Create new account:</h2>
+        <label for="inputNameNew">Name:</label>
+        <input type="text" id="inputNameNew" name="name" required size="12" maxlength="12">
+        <br>
+        <label for="inputTitleNew">Title:</label>
+        <input type="text" id="inputTitleNew" name="title" required size="30" maxlength="30">
+        <br>
+        <label for="inputRaceNew">Race:</label>
+        <select id="inputRaceNew" name="race">
+            <option value='HUMAN'>HUMAN</option>
+            <option value='DWARF'>DWARF</option>
+            <option value='ELF'>ELF</option>
+            <option value='GIANT'>GIANT</option>
+            <option value='ORC'>ORC</option>
+            <option value='TROLL'>TROLL</option>
+            <option value='HOBBIT'>HOBBIT</option>
+        </select>
+        <br>
+        <label for="inputProfessionNew">Profession:</label>
+        <select id="inputProfessionNew" name="profession">
+            <option value='WARRIOR'>WARRIOR</option>
+            <option value='ROGUE'>ROGUE</option>
+            <option value='SORCERER'>SORCERER</option>
+            <option value='CLERIC'>CLERIC</option>
+            <option value='PALADIN'>PALADIN</option>
+            <option value='NAZGUL'>NAZGUL</option>
+            <option value='WARLOCK'>WARLOCK</option>
+            <option value='DRUID'>DRUID</option>
+        </select>
+        <br>
+        <label for="inputLevelNew">Level:</label>
+        <input type="number" id="inputLevelNew" name="level" required min="0" max="100">
+        <br>
+        <label for="inputBirthdayNew">Birthday:</label>
+        <input type="date" id="inputBirthdayNew" name="birthday" required min="2000-01-01" max="3000-12-31">
+        <br>
+        <label for="inputBannedNew">Banned:</label>
+        <select id="inputBannedNew" name="banned">
+            <option value='false'>false</option>
+            <option value='true'>true</option>
+        </select>
+        <br>
+        <span>
+            <button type=submit onclick="create()">Save</button>
+        </span>
+    </section>
+</main>
 </body>
 </html>
